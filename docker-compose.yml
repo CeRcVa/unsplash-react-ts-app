@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  dev:
+    image: node:18-alpine
+    working_dir: /app
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    command: sh -c "npm ci && npm run dev -- --host 0.0.0.0"
+    ports:
+      - "5173:5173"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    # use this when you want to run local development inside a container
+
+  web:
+    build:
+      context: .
+      args:
+        VITE_UNSPLASH_ACCESS_KEY: ${VITE_UNSPLASH_ACCESS_KEY}
+    image: unsplash-app:latest
+    ports:
+      - "5173:80" # map nginx:80 -> host:5173 for convenience (same port as dev)
+    environment:
+      # NOTE: production build inlines env at build-time, these do nothing at runtime for Vite-built static files.
+      - NODE_ENV=production
+    restart: unless-stopped
