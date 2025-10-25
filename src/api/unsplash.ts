@@ -13,7 +13,6 @@ export interface Photo {
     full: string;
     regular: string;
     small: string;
-    thumb: string;
   };
   alt_description?: string;
   description?: string;

@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/types.d.ts","./src/vite-env.d.ts","./src/api/unsplash.ts","./src/components/app.tsx","./src/components/photogrid.tsx","./src/components/photomodal.tsx","./src/components/searchinput.tsx","./src/hooks/usedebounce.ts","./src/hooks/useinfinitephotos.ts"],"version":"5.9.3"}
